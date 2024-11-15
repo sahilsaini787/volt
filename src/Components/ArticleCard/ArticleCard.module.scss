@@ -1,0 +1,63 @@
+.articleCardContainer {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+
+  .articleCardThumbnailContainer {
+    height: 10rem;
+    position: relative;
+
+    .articleCardThumbnail {
+      border-radius: 10px;
+    }
+  }
+
+  .articleMeta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: slategray;
+    margin-top: 1.5rem;
+  }
+
+  .articleMainPreview {
+    margin-top: 0.3rem;
+
+    .articleTitlePreview {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    //don't display for mobile devices.
+    .articleContentPreview {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 728px) {
+  .articleCardContainer {
+    .articleMainPreview {
+      .articleContentPreview {
+        font-size: 0.9rem;
+        padding-top: 0.5rem;
+        color: slategray;
+
+        -webkit-line-clamp: 3;
+      }
+
+      .articleTitlePreview {
+        -webkit-line-clamp: 2;
+      }
+
+      .articleContentPreview,
+      .articleTitlePreview {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+      }
+    }
+  }
+}

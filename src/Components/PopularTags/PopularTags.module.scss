@@ -1,0 +1,58 @@
+.popularTagsContainer {
+  width: 35%;
+  padding-left: 2rem;
+  display: block;
+  background: white;
+
+  .popularTagsHeader {
+    font-size: 0.9rem;
+    color: #555;
+    padding-bottom: 0.6rem;
+  }
+
+  .tagsListContainer {
+    .tagsList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .tagsListItem {
+        list-style: none;
+        background-color: #f3f1fa;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+
+        .tagsListItemLink {
+          text-decoration: none;
+          font-size: 0.85rem;
+          color: #555;
+          font-weight: 500;
+          display: block;
+        }
+
+        .tagsCount {
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: #555;
+          text-align: center;
+        }
+      }
+
+      .tagsListItem:hover {
+        color: black;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .popularTagsContainer {
+    display: block;
+  }
+}

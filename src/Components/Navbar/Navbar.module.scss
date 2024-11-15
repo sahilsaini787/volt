@@ -1,0 +1,102 @@
+.navbarRoot {
+  width: 100%;
+  height: 4.5rem;
+  border-bottom: 1px solid slategray;
+  background: white;
+
+  position: sticky;
+  top: 0px;
+  z-index: 100; //higher z-index so it stays on top of everything
+
+  .navbarContainer {
+    width: 100%;
+    height: 100%;
+    padding: 0.8rem 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbarStart {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      a {
+        text-decoration: none;
+      }
+
+      .navbarLogo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        .navbarLogoSVGContainer {
+          .navbarLogoSVG {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+
+        .navbarLogoText {
+          color: black;
+          font-size: 1.5rem;
+          font-weight: 500;
+          user-select: none;
+          text-decoration: none;
+        }
+      }
+
+      .navMenuList {
+        display: flex;
+        gap: 0.5rem;
+
+        .navMenuItem {
+          list-style: none;
+          padding: 0.6rem;
+
+          .navMenuItemLink {
+            text-decoration: none;
+            color: #333;
+          }
+        }
+
+        .navMenuItem:hover,
+        .navMenuItem:active {
+          border-radius: 10px;
+          background-color: #efefef;
+        }
+      }
+    }
+
+    .userPrefBtns {
+      display: flex;
+      gap: 1rem;
+
+      .switchLayoutBtn,
+      .switchThemeBtn {
+        background: none;
+        border: 1px solid slategray;
+        padding: 0.5rem;
+        border-radius: 5px;
+        height: 2.4rem;
+        width: 2.4rem;
+      }
+
+      .switchLayoutBtn:hover,
+      .switchThemeBtn:hover {
+        cursor: pointer;
+        background-color: #efefef;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbarRoot {
+    .navbarContainer {
+      width: 75%;
+      margin: auto;
+    }
+  }
+}
