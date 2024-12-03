@@ -9,5 +9,5 @@ export default async function ArticlePreviewSectionWrapper({
   tag: string;
 }) {
   const articlesData = await fetchPosts(category, tag);
-  return <ArticlePreviewSection articlesData={articlesData} />;
+  return <ArticlePreviewSection posts={articlesData} />;
 }

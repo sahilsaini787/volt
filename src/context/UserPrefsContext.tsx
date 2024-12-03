@@ -67,11 +67,7 @@ export default function UserPrefsContext({
     <UserContext.Provider
       value={{ layoutStyle, themeMode, handleLayoutChange, handleThemeChange }}
     >
-      <div
-        className={`${styles.rootDiv} ${themeMode === "light" ? styles.lightMode : styles.darkMode}`}
-      >
-        {children}
-      </div>
+      <div className={styles.rootDiv}>{children}</div>
     </UserContext.Provider>
   );
 }

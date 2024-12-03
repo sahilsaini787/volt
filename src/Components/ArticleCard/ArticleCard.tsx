@@ -1,18 +1,18 @@
 import styles from "@/Components/ArticleCard/ArticleCard.module.scss";
 import Image from "next/image";
-import { ArticleCardPropsType } from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
 import Link from "next/link";
 import {
   parseDate,
   calculateTimeToReadArticle,
   parseHTMLParagraphList,
 } from "@/utils/HTMLParser";
+import { PostType } from "@/lib/types/postsType";
 
 const ArticleCard = ({
   postData,
   layoutStyle,
 }: {
-  postData: ArticleCardPropsType;
+  postData: PostType;
   layoutStyle: "grid" | "list";
 }) => {
   const {

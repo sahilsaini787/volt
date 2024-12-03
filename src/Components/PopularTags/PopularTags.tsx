@@ -14,7 +14,7 @@ const PopularTags = ({ tags }: { tags: TagsType }) => {
       {tags ? (
         <>
           <div className={styles.popularTagsHeader}>
-            <span>Popular Tags</span>
+            <span>POPULAR TAGS</span>
           </div>
           <div className={styles.tagsListContainer}>
             <ul className={styles.tagsList}>
