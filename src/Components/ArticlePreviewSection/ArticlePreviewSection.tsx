@@ -3,48 +3,9 @@
 import ArticleCard from "@/Components/ArticleCard/ArticleCard";
 import styles from "@/Components/ArticlePreviewSection/ArticlePreviewSection.module.scss";
 import { useUserContext } from "@/context/UserPrefsContext";
+import { PostType } from "@/lib/types/postsType";
 
-export type ArticleCardPropsType = {
-  featuredImage: {
-    node: {
-      altText: string;
-      mediaItemUrl: string;
-      mediaDetails: {
-        sizes: Array<{
-          sourceUrl: string;
-          height: number;
-          width: number;
-        }>;
-      };
-    };
-  };
-  id: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  slug: string;
-  tags: {
-    nodes: Array<{ name: string }>;
-  };
-  author: {
-    node: {
-      firstName: string;
-      lastName: string;
-      slug: string;
-    };
-  };
-  date: string;
-  modified: string;
-  categories: {
-    nodes: Array<{ name: string }>;
-  };
-};
-
-const ArticlePreviewSection = ({
-  articlesData,
-}: {
-  articlesData: ArticleCardPropsType[];
-}) => {
+const ArticlePreviewSection = ({ posts }: { posts: PostType[] }) => {
   const { layoutStyle } = useUserContext();
 
   return (
@@ -52,8 +13,8 @@ const ArticlePreviewSection = ({
       <ul
         className={`${layoutStyle === "grid" ? styles.articleGrid : styles.articleList}`}
       >
-        {articlesData ? (
-          articlesData.map((articleData: ArticleCardPropsType) => (
+        {posts ? (
+          posts.map((articleData: PostType) => (
             <ArticleCard
               key={articleData.id}
               postData={articleData}

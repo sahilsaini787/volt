@@ -61,7 +61,9 @@ export default function ArticlePage({ article }: { article: articleType }) {
         </div>
         <div className={styles.articleAndAuthorMeta}>
           <div className={styles.articleAuthor}>
-            <Link href="">{`${authorFirstName} ${authorLastName}`}</Link>
+            <Link
+              href={`/author/${authorSlug}`}
+            >{`${authorFirstName} ${authorLastName}`}</Link>
           </div>
           <div className={styles.articleMeta}>
             <div className={styles.timeToRead}>

@@ -1,10 +1,11 @@
 export async function fetchPosts(
   category: string | null = "",
-  tag: string | null = ""
+  tag: string | null = "",
+  author: string | null = ""
 ) {
   const postsQuery: string = `
-query GetPosts($category: String, $tag: String) {
-   posts(where: { categoryName: $category, tag: $tag }, first: 60) {
+query GetPosts($category: String, $tag: String, $author: String) {
+   posts(where: { categoryName: $category, tag: $tag, authorName: $author }, first: 60) {
      nodes {
        featuredImage {
          node {
@@ -31,9 +32,14 @@ query GetPosts($category: String, $tag: String) {
        }
        author {
          node {
-           firstName
-           lastName
-           slug
+          firstName
+        lastName
+        slug
+        id
+        description
+        avatar {
+          url
+        }
          }
        }
        date
@@ -61,7 +67,7 @@ query GetPosts($category: String, $tag: String) {
       },
       body: JSON.stringify({
         query: postsQuery,
-        variables: { category, tag },
+        variables: { category, tag, author },
       }),
       cache: "force-cache",
     });
