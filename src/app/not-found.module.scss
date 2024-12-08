@@ -20,7 +20,7 @@
     .msgNotFound {
       font-size: 1.875rem;
       line-height: 2.25rem;
-
+      color: var(--msgNotFound-text);
       font-family: var(--font-inter);
       margin-top: 1rem;
       margin-bottom: 2rem;
@@ -29,6 +29,7 @@
       font-size: 1rem;
       margin: 1.4rem 0;
       line-height: 2rem;
+      color: var(--msgVisitHomePage-text);
     }
 
     .redirect404Buttons {
@@ -41,7 +42,7 @@
       .goBackHome {
         padding: 0.8rem 1rem;
         display: block;
-        color: var(--go-back-home-text-color);
+        color: var(--go-back-home-text);
         background-color: var(--go-back-home-background);
         font-weight: 600;
         border-radius: 10px;
@@ -49,7 +50,7 @@
       .contactUs {
         display: block;
         font-weight: 600;
-
+        color: var(--contactUs-text);
         span {
           font-size: 0.875rem;
           line-height: 1.25rem;

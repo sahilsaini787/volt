@@ -1,4 +1,4 @@
-export async function fetchCategories() {
+export async function GetCategorySlug() {
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GRAPHQL_API_URL is not defined.");
@@ -12,18 +12,15 @@ export async function fetchCategories() {
       },
       body: JSON.stringify({
         query: `
-            query GetCategories {
-              categories {
-                nodes {
-                  id
-                  name
-                  slug
-                  link
+              query GetCategorySlug {
+                categories {
+                  nodes {
+                    slug
+                  }
                 }
-              }
-            }`,
+              }`,
       }),
-      cache: "force-cache",
+      next: { revalidate: 90 },
     });
 
     if (!response.ok) {

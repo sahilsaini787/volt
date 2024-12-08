@@ -1,26 +1,13 @@
-.lightMode {
-  /* 404 Page */
-  --msg-404-text: #768499;
-  --go-back-home-background: #f3f6f9;
-  --go-back-home-text-color: #020817;
-  --contact-us-text-color: #020817;
-
-  /* Navbar */
-}
-
-/* Define dark theme */
-.darkMode {
-  /* 404 Page */
-  --msg-404-text: #94a3b8;
-  --go-back-home-background: #182334;
-  --go-back-home-text-color: #f6f8fa;
-  --contact-us-text-color: #f6f8fa;
+a {
+  text-decoration: none;
+  color: black;
 }
 
 html,
 body {
   max-width: 100vw;
   font-family: var(--font-geist-sans);
+  background-color: var(--main-background);
 }
 
 * {
@@ -35,7 +22,165 @@ body {
   min-height: 100vh;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+.lightMode {
+  --main-background: #fbfbfb;
+
+  /* 404 Page */
+  --msg-404-text: #768499;
+  --go-back-home-background: #f3f6f9;
+  --go-back-home-text: #020817;
+  --contact-us-text: #020817;
+  --msgNotFound-text: #020817;
+  --msgVisitHomePage-text: #020817;
+  --contactUs-text: #020817;
+
+  /* Navbar */
+  --nav-background: #fbfbfb;
+  --nav-text: #020817;
+  --nav-border: #cbd5e4;
+
+  --navMenuList-background: #f1f5f9;
+  --navMenuList-text: #64748b;
+  --navMenuItemLink-text: #64748b;
+  --navMenuItemLink-text-hover: #0f172a;
+  --activeNavMenuItem-text: #0f172a;
+
+  --navMenuItemLink-text-hover-background: #f1f5f9;
+
+  --userPrefBtns-border: #cbd5e4;
+  --userPrefBtns-hover-background: #f1f5f9;
+  --userPrefBtns: #0f172a;
+
+  /* POPULAR TAGS */
+  --popularTags-background: #fbfbfb;
+  --popularTags-text: #64748b;
+  --tag-list-background: #f3f6f9;
+  --tag-list-text-color: #49566d;
+  --tag-list-hover-text: #020817;
+  --hover-tag-list-background: #f3f6f9;
+  --active-tag-list-background: #0f172a;
+  --active-tag-list-hover-background: #3e4454;
+  --active-tag-list-text: #fbfbfb;
+
+  /* Categories Bar */
+  --categoriesBarList-background: #fbfbfb;
+  --categoriesBarList-text: #64748b;
+  --categoriesBarContainer-border: #cbd5e4;
+  --categoriesListItem-hover-background: #f1f5f9;
+  --categoriesListItemLink-hover-text: #0f172a;
+  --active-categoriesListItem-background: #f1f5f9;
+  --active-categoriesListItemLink-text: #0f172a;
+
+  /* Article Card */
+  --articleCard-text: #64748b;
+  --articleCard-header: #020817;
+  --articleCard-border: #cbd5e4;
+
+  /* Article Page */
+  --articleMeta: #64748b;
+  --article-figcaption: #2e3036;
+  --article-underlineSeperator: #cbd5e4;
+  --article-text: #020817;
+  --article-authorDescriptionCredits: #64748b;
+  --article-authorHomepageCredits: #64748b;
+  --article-authorHomepage-border: #cbd5e4;
+
+  /* Author Page */
+  --authorName: #020817;
+  --authorDescription: #64748b;
+  --article-header: #64748b;
+
+  /* Back to top btn */
+  --backToTop-text: #fbfbfb;
+  --backToTop-background: #020817;
+
+  /* Footer */
+  --footerContainer-background: #f1f5f9;
+  --footerContainer-border: #cbd5e4;
+  --footer-list-item-text: #64748b;
+  --footerLogo: #2e3441;
+  --footer-header: #2e3441;
+  --footer-list-item-hover-text: #020817;
+}
+
+/* Define dark theme */
+.darkMode {
+  --main-background: #020817;
+
+  /* 404 Page */
+  --msg-404-text: #94a3b8;
+  --go-back-home-background: #182334;
+  --go-back-home-text: #f6f8fa;
+  --contact-us-text: #f6f8fa;
+  --msgNotFound-text: #f8fafc;
+  --msgVisitHomePage-text: #f8fafc;
+  --contactUs-text: #f8fafc;
+
+  /* Navbar */
+  --nav-background: #020817;
+  --nav-text: #f8fafc;
+  --nav-border: #1e293b;
+
+  --navMenuList-background: #1e293b;
+  --navMenuList-text: #94a3ad;
+  --navMenuItemLink-text: #94a3ad;
+  --navMenuItemLink-text-hover-background: #1e293b;
+  --navMenuItemLink-text-hover: #f8fafc;
+  --activeNavMenuItem-text: #f8fafc;
+
+  --userPrefBtns-border: #1e293b;
+  --userPrefBtns-hover-background: #1e293b;
+  --userPrefBtns: #f8fafc;
+
+  /* Popular tags */
+  --popularTags-background: #020817;
+  --popularTags-text: #94a3b8;
+  --tag-list-background: #1e293b;
+  --tag-list-text-color: #c5c9d0;
+  --tag-list-hover-text: #f8fafc;
+  --hover-tag-list-background: #0f172a;
+  --active-tag-list-background: #fbfbfb;
+  --active-tag-list-hover-background: #c6cacf;
+  --active-tag-list-text: #0f172a;
+
+  /* categories bar */
+  --categoriesBarList-background: #1e293b;
+  --categoriesBarList-text: #94a3b8;
+  --categoriesBarContainer-border: #1e293b;
+  --categoriesListItem-hover-background: #1e293b;
+  --categoriesListItemLink-hover-text: #f8fafc;
+  --categories-btn-text: #fbfbfb;
+  --active-categoriesListItem-background: #1e293b;
+  --active-categoriesListItemLink-text: #f8fafc;
+
+  /* ArticleCard */
+  --articleCard-text: #94a3b8;
+  --articleCard-header: #f8fafc;
+  --articleCard-border: #1e293b;
+
+  /* Article Page */
+  --articleMeta: #94a3b8;
+  --article-figcaption: #f8fafc;
+  --article-underlineSeperator: #1e293b;
+  --article-text: #f8fafc;
+  --article-authorDescriptionCredits: #94a3b8;
+  --article-authorHomepageCredits: #94a3b8;
+  --article-authorHomepage-border: #1e293b;
+
+  /* Author Page */
+  --authorName: #f8fafc;
+  --authorDescription: #94a3b8;
+  --article-header: #94a3b8;
+
+  /* Back to top btn */
+  --backToTop-text: #020817;
+  --backToTop-background: #fbfbfb;
+
+  /* footer */
+  --footerContainer-background: #1e293b;
+  --footerContainer-border: #1e293b;
+  --footer-list-item-text: #94a3b8;
+  --footerLogo: #f8fafc;
+  --footer-header: #f3f5f7;
+  --footer-list-item-hover-text: #f8fafc;
 }
