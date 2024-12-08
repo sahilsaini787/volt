@@ -1,15 +1,3 @@
-.lightMode {
-  --background-color: #ffffff;
-  --text-color: #000000;
-}
-
-/* Define dark theme */
-.darkMode {
-  --background-color: #000000;
-  --text-color: #ffffff;
-}
-
 .rootDiv {
-  background-color: var(--background-color);
   height: auto;
 }
