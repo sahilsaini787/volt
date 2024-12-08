@@ -3,11 +3,28 @@
 import Link from "next/link";
 import styles from "@/Components/CategoriesBar/CategoriesBar.module.scss";
 import { CategoriesType, CategoryType } from "@/lib/types/categories";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUserContext } from "@/context/UserPrefsContext";
+import { usePathname } from "next/navigation";
 
 const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
+  const currentPathName = usePathname();
   const [showDropdownMenu, setShowDorpdownMenu] = useState<boolean>(false);
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
+  const [activeCategory, setActiveCategory] = useState<string>(currentPathName);
+
+  useEffect(() => {
+    setIsTouchDevice(navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    handleActiveCategory(currentPathName);
+  }, [currentPathName]);
+
+  function handleActiveCategory(slug: string) {
+    setActiveCategory(slug);
+  }
+
   const { themeMode } = useUserContext();
   return (
     <div
@@ -15,12 +32,18 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
     >
       <div
         className={styles.showCategoriesBarBtnContainer}
-        onPointerOver={() => setShowDorpdownMenu(true)}
-        onPointerOut={() => setShowDorpdownMenu(false)}
+        onPointerOver={
+          !isTouchDevice ? () => setShowDorpdownMenu(true) : undefined
+        }
+        onPointerOut={
+          !isTouchDevice ? () => setShowDorpdownMenu(false) : undefined
+        }
       >
         <button
           className={`${styles.showCategoriesBarBtn} ${showDropdownMenu ? styles.animateDropdownSVG_Up : styles.animateDropdownSVG_Down}`}
-          onClick={() => setShowDorpdownMenu(!showDropdownMenu)}
+          onClick={() => {
+            setShowDorpdownMenu(!showDropdownMenu);
+          }}
         >
           Categories
           <svg
@@ -41,23 +64,21 @@ const CategoriesBar = ({ categories }: { categories: CategoriesType }) => {
             ${showDropdownMenu ? styles.showCategoriesBarList : styles.removeCategoriesBarList}
             ${showDropdownMenu ? styles.showCategoriesListAnimation : styles.removeCategoriesListAnimation}`}
         >
-          {!categories ? (
-            <div>Loading...</div>
-          ) : (
-            categories.map((category: CategoryType) =>
-              category.name !== "Uncategorized" &&
-              category.name !== "Learning" ? (
-                <li key={category.id} className={styles.categoriesListItem}>
-                  <Link
-                    href={`/category/${category.slug}`}
-                    className={styles.categoriesListItemLink}
-                  >
-                    {category.name}
-                  </Link>
-                </li>
-              ) : null
-            )
-          )}
+          {!categories
+            ? null
+            : categories.map((category: CategoryType) =>
+                category.name !== "Uncategorized" &&
+                category.name !== "Learning" ? (
+                  <li key={category.id} className={styles.categoriesListItem}>
+                    <Link
+                      href={`/category/${category.slug}`}
+                      className={`${styles.categoriesListItemLink} ${activeCategory === `/category/${category.slug}` ? styles.setActiveCategory : ""}`}
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ) : null
+              )}
         </ul>
       </div>
     </div>

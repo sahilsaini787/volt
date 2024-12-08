@@ -1,4 +1,4 @@
-export type articleType = {
+export type articlePageType = {
   id: string;
   slug: string;
   content: string | null;
@@ -16,4 +16,10 @@ export type articleType = {
   } | null;
   date: string | null;
   title: string | null;
+  featuredImage: {
+    node: {
+      altText: string | null;
+      mediaItemUrl: string | null;
+    };
+  };
 };

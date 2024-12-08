@@ -2,50 +2,58 @@
 
 import styles from "@/Components/Navbar/UserPrefs/UserPrefs.module.scss";
 import { useUserContext } from "@/context/UserPrefsContext";
+import { usePathname } from "next/navigation";
 
 export default function UserPrefs() {
   const { layoutStyle, handleLayoutChange, themeMode, handleThemeChange } =
     useUserContext();
+  const currentPath = usePathname();
 
   return (
     <div className={styles.userPrefBtns}>
       <div className={styles.switchLayoutBtnContainer}>
-        <button className={styles.switchLayoutBtn} onClick={handleLayoutChange}>
-          {layoutStyle === "list" ? (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-[1.2rem] w-[1.2rem] transition-all -rotate-90 scale-0"
-            >
-              <rect width="7" height="7" x="3" y="3" rx="1"></rect>
-              <rect width="7" height="7" x="3" y="14" rx="1"></rect>
-              <path d="M14 4h7"></path>
-              <path d="M14 9h7"></path>
-              <path d="M14 15h7"></path>
-              <path d="M14 20h7"></path>
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all"
-            >
-              <rect width="7" height="7" x="3" y="3" rx="1"></rect>
-              <rect width="7" height="7" x="14" y="3" rx="1"></rect>
-              <rect width="7" height="7" x="14" y="14" rx="1"></rect>
-              <rect width="7" height="7" x="3" y="14" rx="1"></rect>
-            </svg>
-          )}
-        </button>
+        {currentPath.startsWith("/author") ||
+        currentPath.startsWith("/article") ? null : (
+          <button
+            className={styles.switchLayoutBtn}
+            onClick={handleLayoutChange}
+          >
+            {layoutStyle === "list" ? (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-[1.2rem] w-[1.2rem] transition-all -rotate-90 scale-0"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+                <path d="M14 4h7"></path>
+                <path d="M14 9h7"></path>
+                <path d="M14 15h7"></path>
+                <path d="M14 20h7"></path>
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+              </svg>
+            )}
+          </button>
+        )}
       </div>
       <div className={styles.switchThemeBtnContainer}>
         <button className={styles.switchThemeBtn} onClick={handleThemeChange}>

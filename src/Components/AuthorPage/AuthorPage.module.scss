@@ -1,0 +1,70 @@
+.authorPageContainer {
+  width: 100%;
+  grid-column: 1 / span 4;
+
+  flex-grow: 1;
+  .authorPage {
+    width: 100%;
+
+    .authorInfo {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-source-serif-4);
+
+      .authorAvatarContainer {
+        height: 5.75rem;
+        width: 5.75rem;
+        position: relative;
+
+        .authorAvatar {
+          height: 100%;
+          width: 100%;
+          border-radius: 100%;
+        }
+      }
+      .authorTitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--authorName);
+        padding-top: 1rem;
+      }
+      .authorDescription {
+        color: var(--authorDescription);
+        font-family: var(--font-roboto);
+        font-size: 0.9rem;
+      }
+    }
+
+    .articleSectionHeader {
+      margin-top: 2rem;
+      color: var(--article-header);
+      font-family: var(--font-roboto);
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      padding-bottom: 1.4rem;
+    }
+
+    .articleContainer {
+      width: 100%;
+      height: fit-content;
+      padding-bottom: 3rem;
+      container-type: inline-size;
+      container-name: article-container;
+
+      .articleList {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+        column-gap: 2rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .authorPageContainer {
+    grid-column: 1 / span 3;
+  }
+}

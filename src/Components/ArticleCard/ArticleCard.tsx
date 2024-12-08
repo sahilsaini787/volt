@@ -1,18 +1,18 @@
 import styles from "@/Components/ArticleCard/ArticleCard.module.scss";
 import Image from "next/image";
-import { ArticleCardPropsType } from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
 import Link from "next/link";
 import {
   parseDate,
   calculateTimeToReadArticle,
   parseHTMLParagraphList,
 } from "@/utils/HTMLParser";
+import { PostType } from "@/lib/types/postsType";
 
 const ArticleCard = ({
   postData,
   layoutStyle,
 }: {
-  postData: ArticleCardPropsType;
+  postData: PostType;
   layoutStyle: "grid" | "list";
 }) => {
   const {
@@ -41,6 +41,8 @@ const ArticleCard = ({
           style={{ objectFit: "cover" }}
           alt={thumbnailAltText}
           className={styles.articleCardThumbnail}
+          sizes="(max-width: 540px) 90vw, (max-width: 728px) 30vw, 20vw"
+          quality={50}
         />
       </div>
       <div className={styles.articleTextContentPreview}>

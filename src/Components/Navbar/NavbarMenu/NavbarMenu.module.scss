@@ -2,8 +2,9 @@
   .activeNavMenuItem {
     background: none;
     border: none;
-    font-size: 1rem;
+    font-size: 0.875rem;
     padding: 1rem;
+    color: var(--activeNavMenuItem-text);
 
     .dropdownBtnSVG {
       width: 0.9rem;
@@ -29,11 +30,11 @@
     padding: 1rem;
     padding-top: 1.4rem;
     padding-bottom: 1.4rem;
-    background-color: #f7f9fd;
+    background-color: var(--navMenuList-background);
     border-radius: 8px;
     position: absolute;
     z-index: 1000;
-    color: #666;
+    color: var(--navMenuList-text);
     width: fit-content;
 
     .navMenuItem {
@@ -42,7 +43,7 @@
       .navMenuItemLink {
         display: block;
         text-decoration: none;
-        color: #333;
+        color: var(--navMenuItemLink-text);
         padding: 0.6rem;
       }
     }
@@ -58,55 +59,53 @@
     animation: scaleUp 0.4s ease forwards;
   }
 
-  @media (min-width: 928px) {
+  @media (min-width: 768px) {
     .navMenuList {
       display: flex;
       flex-direction: row;
       row-gap: 0rem;
-      padding: 1rem;
-      padding-top: 0rem;
-      padding-bottom: 0rem;
+      padding: 0 1rem;
       background: none;
       border-radius: 8px;
       position: static;
       z-index: 1000;
-      color: #666;
       width: fit-content;
       margin-top: 0;
+      font-size: 0.875rem;
 
       .navMenuItem {
         margin-right: 1rem;
-        padding: 0.6rem;
+        padding: 0.6rem 0;
 
         &:last-child {
           margin-right: 0;
         }
 
         .navMenuItemLink {
-          &:hover,
-          &:active {
-            background-color: #efefef;
+          &:hover {
+            background-color: var(--navMenuItemLink-text-hover-background);
             border-radius: 8px;
+            color: var(--navMenuItemLink-text-hover);
           }
         }
-      }
-
-      .activeMenuTab {
-        background-color: #efefef;
-        border-radius: 8px;
+        .activeMenuTab {
+          background-color: var(--navMenuItemLink-text-hover-background);
+          color: var(--activeNavMenuItem-text);
+          border-radius: 8px;
+        }
       }
     }
 
     .activeNavMenuItem {
       background: none;
       border: none;
-      font-size: 1rem;
+      font-size: 0.875rem;
       display: none;
     }
   }
 }
 
-@media (max-width: 928px) {
+@media (max-width: 768px) {
   @keyframes hoverAnim {
     0% {
       transform: rotate(0deg);

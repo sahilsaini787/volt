@@ -1,14 +1,11 @@
-$button-size: 2.5rem;
-$primary-color: #000;
-
 .backToTopButton {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  width: $button-size;
-  height: $button-size;
-  background-color: $primary-color;
-  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--backToTop-background);
+  color: var(--backToTop-text);
   border: none;
   border-radius: 8px;
 

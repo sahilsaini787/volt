@@ -2,13 +2,22 @@ import styles from "@/app/page.module.scss";
 import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
 import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
 import { CategoriesType } from "@/lib/types/categories";
-import { fetchCategories } from "@/lib/api/categoryFetcher";
+import { GetCategories } from "@/lib/api/getCategory";
 import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
 import { ParamsType } from "@/lib/types/paramsType";
 
+// revalidate the site every 90s instead of rebuilding entire page
+export const revalidate = 90;
+
+//generate page statically based on url
+export async function generateStaticParams() {
+  const possibleIds = ["", "tools", "learn"];
+  return possibleIds.map((id) => ({ id }));
+}
+
 const DisplayPosts = async ({ params }: ParamsType) => {
-  const categories: CategoriesType = await fetchCategories();
+  const categories: CategoriesType = await GetCategories();
   const id = (await params).id;
   switch (id) {
     case "":
@@ -16,7 +25,11 @@ const DisplayPosts = async ({ params }: ParamsType) => {
         <div className={styles.contentWrapper}>
           <CategoriesBar categories={categories} />
           <div className={styles.page}>
-            <ArticlePreviewSectionWrapper category="" tag="" />
+            <ArticlePreviewSectionWrapper
+              categoryToExclude={"143"}
+              category=""
+              tag=""
+            />
             <PopularTagsWrapper />
           </div>
         </div>
