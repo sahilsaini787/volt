@@ -11,8 +11,8 @@
       font-family: var(--font-source-serif-4);
 
       .authorAvatarContainer {
-        height: 5.5rem;
-        width: 5.5rem;
+        height: 5.75rem;
+        width: 5.75rem;
         position: relative;
 
         .authorAvatar {
@@ -22,31 +22,26 @@
         }
       }
       .authorTitle {
-        font-size: 2rem;
-        font-weight: 600;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--authorName);
+        padding-top: 1rem;
       }
       .authorDescription {
-        color: #777;
-      }
-
-      .authorHomepageContainer {
-        border: 1px solid #777;
-        border-radius: 20px;
-        width: fit-content;
-        padding: 0.4rem 0.8rem;
-        margin-top: 1rem;
-
-        .authorHomepage {
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: #999;
-          display: block;
-        }
+        color: var(--authorDescription);
+        font-family: var(--font-roboto);
+        font-size: 0.9rem;
       }
     }
 
     .articleSectionHeader {
       margin-top: 2rem;
+      color: var(--article-header);
+      font-family: var(--font-roboto);
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      padding-bottom: 1.4rem;
     }
 
     .articleContainer {

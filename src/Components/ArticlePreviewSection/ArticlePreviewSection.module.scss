@@ -11,8 +11,12 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 3rem;
+    row-gap: 2rem;
     column-gap: 2rem;
+  }
+
+  .articleGrid {
+    row-gap: 4rem;
   }
 }
 
@@ -30,6 +34,7 @@
 
 @media (min-width: 728px) {
   .articleContainer {
+    padding: 0rem;
     margin: auto;
     .articleGrid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -44,7 +49,7 @@
 @media (min-width: 1060px) {
   .articleContainer {
     margin: auto;
-    padding: 0 1rem;
+    padding: 0;
     //to account for learn page,
     //since it doesn't contains any tags section so need to adjust
     //no. of columns on the basis of that.

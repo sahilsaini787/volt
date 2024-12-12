@@ -14,13 +14,15 @@ const ArticlePreviewSection = ({ posts }: { posts: PostType[] }) => {
         className={`${layoutStyle === "grid" ? styles.articleGrid : styles.articleList}`}
       >
         {posts ? (
-          posts.map((articleData: PostType) => (
-            <ArticleCard
-              key={articleData.id}
-              postData={articleData}
-              layoutStyle={layoutStyle}
-            />
-          ))
+          posts.map((articleData: PostType) =>
+            articleData.categories.nodes[0].name !== "Learning" ? (
+              <ArticleCard
+                key={articleData.id}
+                postData={articleData}
+                layoutStyle={layoutStyle}
+              />
+            ) : null
+          )
         ) : (
           <span>Loading Articles...</span>
         )}

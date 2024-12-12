@@ -19,7 +19,12 @@ query getArticle($slug: ID!) {
     }
     date
     title
-
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
    }
  }
 `;

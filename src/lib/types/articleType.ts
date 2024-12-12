@@ -16,4 +16,10 @@ export type articleType = {
   } | null;
   date: string | null;
   title: string | null;
+  featuredImage: {
+    node: {
+      altText: string | null;
+      mediaItemUrl: string | null;
+    };
+  };
 };

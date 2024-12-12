@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar/Navbar";
 import Footer from "@/Components/Footer/Footer";
 import BackToTopButton from "@/Components/BackToTop/BackToTop";
-import { Roboto, Source_Serif_4, Inter } from "next/font/google";
+import { Roboto, Source_Serif_4, Inter, Open_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import UserPrefsContext from "@/context/UserPrefsContext";
 import { cookies } from "next/headers";
@@ -12,6 +12,12 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-roboto",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-open-sans",
 });
 
 const sourceSerif4 = Source_Serif_4({
@@ -38,12 +44,23 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Volt",
+  title: "fedup",
   description: "A blogging website",
 };
 
 type LayoutStyleType = "grid" | "list";
 type ThemeModeType = "dark" | "light";
+
+type locationDataType = {
+  country_code: string;
+  country_name: string;
+  city: string;
+  postal: string;
+  latitude: number;
+  longitude: number;
+  IP: string;
+  state: string;
+};
 
 export default async function RootLayout({
   children,
@@ -58,9 +75,12 @@ export default async function RootLayout({
     (cookieStore.get("themeMode")?.value as ThemeModeType) || "light";
 
   return (
-    <html lang="en" className="lightMode">
+    <html
+      lang="en"
+      className={`${storedThemeMode === "light" ? "lightMode" : "darkMode"}`}
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable} ${inter.variable}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} ${sourceSerif4.variable} ${inter.variable} ${openSans.variable}`}
       >
         <UserPrefsContext
           storedLayoutStyle={storedLayoutStyle}
