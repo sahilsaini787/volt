@@ -1,32 +1,28 @@
-import ArticlePreviewSectionWrapper from "@/Components/ArticlePreviewSection/ArticlePreviewSectionWrapper";
 import { notFound } from "next/navigation";
-import styles from "@/app/page.module.scss";
-import CategoriesBar from "@/Components/CategoriesBar/CategoriesBar";
-import PopularTagsWrapper from "@/Components/PopularTags/PopularTagsWrapper";
-import { CategoriesType } from "@/lib/types/categories";
-import { fetchCategories } from "@/lib/api/categoryFetcher";
-import { fetchTags } from "@/lib/api/tagsFetcher";
+import { GetTags } from "@/lib/api/getTags";
 import { TagType } from "@/lib/types/tags";
 import { ParamsType } from "@/lib/types/paramsType";
+import { GetTagSlug } from "@/lib/api/getTagSlug";
+import ArticlePreviewSection from "@/Components/ArticlePreviewSection/ArticlePreviewSection";
+import { GetPosts } from "@/lib/api/getPosts";
+
+export const revalidate = 90;
+
+export async function generateStaticParams() {
+  const possibleIds: Array<{ slug: string }> = await GetTagSlug();
+  return possibleIds.map((id) => ({ id: id.slug }));
+}
 
 const DisplayPostsByTags = async ({ params }: ParamsType) => {
-  const tags = await fetchTags();
+  const tags = await GetTags();
   const id = (await params).id;
+
+  const postsData = await GetPosts("", id, "", "");
 
   if (!tags.some((tag: TagType) => tag.slug === id)) {
     notFound();
   }
-  const categories: CategoriesType = await fetchCategories();
-
-  return (
-    <div className={styles.contentWrapper}>
-      <CategoriesBar categories={categories} />
-      <div className={styles.page}>
-        <ArticlePreviewSectionWrapper category="" tag={id} />
-        <PopularTagsWrapper />
-      </div>
-    </div>
-  );
+  return <ArticlePreviewSection posts={postsData} />;
 };
 
 export default DisplayPostsByTags;

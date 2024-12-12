@@ -4,10 +4,8 @@ services:
   volt:
     image: sahilsaini787/volt
     container_name: volt
+    hostname: https://sahil.y.llm.lat
     restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     networks:
@@ -16,3 +14,4 @@ services:
 networks:
   nginx-proxy-net:
     external: true
+    driver: bridge

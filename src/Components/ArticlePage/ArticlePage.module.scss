@@ -1,17 +1,24 @@
 .articleContainer {
+  grid-column: 1 / span 4;
   width: 100%;
   height: fit-content;
-  padding: 0 3rem;
   padding-bottom: 3rem;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   font-size: 1.2rem;
+  color: var(--article-text);
+
+  pre {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 
   .articleTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
+    font-family: var(--font-open-sans);
   }
 
   .articleAndAuthorMetaWrapper {
@@ -32,6 +39,9 @@
     .articleAndAuthorMeta {
       .articleAuthor {
         font-size: 0.9rem;
+        a {
+          color: var(--article-text);
+        }
       }
       .articleMeta {
         display: flex;
@@ -40,7 +50,7 @@
         .timeToRead,
         .articlePublishDate {
           font-size: 0.9rem;
-          color: #888;
+          color: var(--articleMeta);
         }
       }
     }
@@ -54,10 +64,14 @@
     width: 100%;
 
     .articleSubHeading {
-      font-size: 2rem;
+      h3 {
+        font-size: 2rem;
+        font-weight: 400;
+      }
     }
     .articleParagraphHeading {
       font-size: 1.2rem;
+      font-family: var(--font-source-serif-4);
     }
 
     .articleParagraph {
@@ -78,7 +92,7 @@
         text-align: center;
         padding-top: 1rem;
         font-size: 1rem;
-        color: #777;
+        color: var(--article-figcaption);
         font-weight: 600;
         font-family: "Times New Roman", Times, serif;
       }
@@ -100,7 +114,7 @@
   }
 
   .underlineSeperator {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--article-underlineSeperator);
   }
 
   .articleCredits {
@@ -125,11 +139,11 @@
       font-weight: 600;
     }
     .authorDescriptionCredits {
-      color: #777;
+      color: var(--article-authorDescriptionCredits);
     }
 
     .authorHomepageContainerCredits {
-      border: 1px solid #777;
+      border: 1px solid var(--article-authorHomepage-border);
       border-radius: 20px;
       width: fit-content;
       padding: 0.4rem 0.8rem;
@@ -138,9 +152,124 @@
       .authorHomepageCredits {
         font-weight: 600;
         font-size: 0.9rem;
-        color: #999;
+        color: var(--article-authorHomepageCredits);
         display: block;
       }
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .articleContainer {
+    padding: 0 3rem;
+    padding-bottom: 3rem;
+    .articleTitle {
+      font-size: 2.5rem;
+    }
+
+    // Main article content
+    .mainArticleContent {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+
+      .articleSubHeading {
+        font-size: 2rem;
+      }
+      .articleParagraphHeading {
+        font-size: 1.2rem;
+        font-family: var(--font-source-serif-4);
+      }
+
+      .articleParagraph {
+        font-family: var(--font-source-serif-4), sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      .articleImage {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        figcaption {
+          display: block;
+          text-align: center;
+          padding-top: 1rem;
+          font-size: 1rem;
+          color: var(--article-figcaption);
+          font-weight: 600;
+          font-family: "Times New Roman", Times, serif;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
+          display: block;
+        }
+      }
+
+      ol,
+      ul {
+        font-family: var(--font-roboto);
+        line-height: 2rem;
+        padding-left: 4rem;
+      }
+    }
+
+    .underlineSeperator {
+      border-top: 1px solid var(--article-underlineSeperator);
+    }
+
+    .articleCredits {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      font-family: var(--font-source-serif-4);
+
+      .authorAvatarCreditsContainer {
+        height: 4.5rem;
+        width: 4.5rem;
+        position: relative;
+
+        .authorAvatarCredits {
+          height: 100%;
+          width: 100%;
+          border-radius: 100%;
+        }
+      }
+      .authorTitleCredits {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      .authorDescriptionCredits {
+        color: var(--article-authorDescriptionCredits);
+      }
+
+      .authorHomepageContainerCredits {
+        border: 1px solid var(--article-authorHomepage-border);
+        border-radius: 20px;
+        width: fit-content;
+        padding: 0.4rem 0.8rem;
+        margin-top: 1rem;
+
+        .authorHomepageCredits {
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--article-authorHomepageCredits);
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .articleContainer {
+    grid-column: 1 / span 3;
   }
 }

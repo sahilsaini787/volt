@@ -1,11 +1,15 @@
-export async function fetchPosts(
+export async function GetPosts(
   category: string | null = "",
   tag: string | null = "",
-  author: string | null = ""
+  author: string | null = "",
+  categoryToExclude: string | null = ""
 ) {
   const postsQuery: string = `
-query GetPosts($category: String, $tag: String, $author: String) {
-   posts(where: { categoryName: $category, tag: $tag, authorName: $author }, first: 60) {
+query GetPosts($category: String, $tag: String, $author: String, $categoryToExclude: [ID]) {
+   posts(where: 
+    { 
+      categoryName: $category, tag: $tag, authorName: $author, categoryNotIn: $categoryToExclude
+    }, first: 60) {
      nodes {
        featuredImage {
          node {
@@ -53,7 +57,7 @@ query GetPosts($category: String, $tag: String, $author: String) {
    }
  }
 `;
-  //for accessing api on client side append with NEXT_PUBLIC_
+
   const apiURL = process.env.GRAPHQL_API_URL;
   if (!apiURL) {
     throw new Error("GraphQL api url is not defined");
@@ -67,9 +71,9 @@ query GetPosts($category: String, $tag: String, $author: String) {
       },
       body: JSON.stringify({
         query: postsQuery,
-        variables: { category, tag, author },
+        variables: { category, tag, author, categoryToExclude },
       }),
-      cache: "force-cache",
+      next: { revalidate: 90 },
     });
 
     if (!response.ok) {
@@ -77,6 +81,10 @@ query GetPosts($category: String, $tag: String, $author: String) {
     }
 
     const { data } = await response.json();
+    if (!data || !data.posts) {
+      throw new Error("Invalid GraphQL response: Missing posts data.");
+    }
+
     return data.posts.nodes;
   } catch (error) {
     console.log("Fetch Error: " + error);

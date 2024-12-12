@@ -1,4 +1,4 @@
-export async function fetchArticle(slug: string) {
+export async function GetArticle(slug: string) {
   const articleQuery: string = `
 query getArticle($slug: ID!) {
   post(id:$slug, idType: SLUG) {
@@ -19,7 +19,12 @@ query getArticle($slug: ID!) {
     }
     date
     title
-
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
    }
  }
 `;
@@ -39,7 +44,7 @@ query getArticle($slug: ID!) {
         query: articleQuery,
         variables: { slug },
       }),
-      cache: "force-cache",
+      next: { revalidate: 90 },
     });
 
     if (!response.ok) {

@@ -1,11 +1,13 @@
 .popularTagsContainer {
   padding-left: 2rem;
   display: none;
-  background-color: var(--background-color);
-  width: 35%;
+  width: 100%;
+  position: sticky;
+  top: 6rem;
+
   .popularTagsHeader {
-    font-size: 1rem;
-    color: var(--text-color);
+    font-size: 0.8rem;
+    color: var(--popularTags-text);
     padding-bottom: 0.6rem;
     font-weight: 600;
   }
@@ -18,34 +20,44 @@
 
       .tagsListItem {
         list-style: none;
-        background-color: var(--tag-list-background-color);
-        padding: 0.4rem 0.8rem;
+        background-color: var(--tag-list-background);
         border-radius: 20px;
 
         display: flex;
         align-items: center;
         gap: 0.2rem;
-        color: var(--text-color);
 
         .tagsListItemLink {
           text-decoration: none;
-          font-size: 0.85rem;
+          width: 100%;
+          height: 100%;
+          font-size: 0.75rem;
           font-weight: 500;
           display: block;
+          color: var(--tag-list-text-color);
+          padding: 0.5rem 0.9rem;
         }
-
-        .tagsCount {
-          text-decoration: none;
-          font-size: 0.85rem;
-          font-weight: 500;
-          text-align: center;
+        .setActiveTag {
+          background-color: var(--active-tag-list-background);
+          color: var(--active-tag-list-text);
+          border-radius: 20px;
         }
       }
 
-      .tagsListItem:hover {
-        color: var(--hover-text-color);
-        background-color: var(--hover-tag-list-background-color);
-        cursor: pointer;
+      .tagsListItem {
+        &:hover {
+          background-color: var(--hover-tag-list-background);
+          cursor: pointer;
+
+          .tagsCount,
+          .tagsListItemLink {
+            color: var(--tag-list-hover-text);
+          }
+          .setActiveTag {
+            color: var(--active-tag-list-text);
+            background-color: var(--active-tag-list-hover-background);
+          }
+        }
       }
     }
   }
@@ -54,32 +66,10 @@
 @media (min-width: 1024px) {
   .popularTagsContainer {
     display: block;
-    background-color: var(--background-color);
-
-    .popularTagsHeader {
-      color: var(--text-color);
-    }
-
     .tagsListContainer {
       .tagsList {
-        .tagsListItem {
-          background-color: var(--tag-list-background-color);
-          color: var(--text-color);
-        }
-
-        .tagsListItemLink,
-        .tagsCount {
-          color: var(--text-color);
-        }
         .tagsListItem:hover {
-          color: var(--hover-text-color);
-          background-color: var(--hover-tag-list-background-color);
           cursor: pointer;
-
-          .tagsListItemLink,
-          .tagsCount {
-            color: var(--hover-text-colortext-color);
-          }
         }
       }
     }

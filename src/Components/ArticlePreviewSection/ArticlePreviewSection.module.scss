@@ -1,23 +1,28 @@
 .articleContainer {
+  grid-column: 1 / span 4;
   width: 100%;
   height: fit-content;
-  padding: 0 0.5rem;
+  // padding: 0 0.5rem;
   padding-bottom: 3rem;
-  container-type: inline-size;
-  container-name: article-container;
 
   .articleGrid,
   .articleList {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    row-gap: 3rem;
+    row-gap: 1.2rem;
     column-gap: 2rem;
+  }
+
+  .articleGrid {
+    row-gap: 4rem;
   }
 }
 
 @media (min-width: 540px) {
   .articleContainer {
+    padding-bottom: 3rem;
+
     .articleGrid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -30,6 +35,9 @@
 
 @media (min-width: 728px) {
   .articleContainer {
+    padding: 0rem;
+    padding-bottom: 3rem;
+
     margin: auto;
     .articleGrid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -41,21 +49,30 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .articleContainer {
+    grid-column: 1 / span 3;
+
+    .articleGrid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .articleList {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .learnPageLayout {
+    grid-column: 1 / span 4;
+
+    .articleGrid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+
 @media (min-width: 1060px) {
   .articleContainer {
     margin: auto;
-    padding: 0 1rem;
-    //to account for learn page,
-    //since it doesn't contains any tags section so need to adjust
-    //no. of columns on the basis of that.
-    // Use @container to adjust based on the element's width.
-    @container article-container (min-width: 900px) {
-      .articleGrid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-      .articleList {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-    }
+    padding: 0;
+    padding-bottom: 3rem;
   }
 }

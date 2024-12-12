@@ -1,17 +1,21 @@
-import { articleType } from "@/lib/types/articleType";
+import { articlePageType } from "@/lib/types/articlePageType";
 import styles from "@/Components/ArticlePage/ArticlePage.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { parseDate, calculateTimeToReadArticle } from "@/utils/HTMLParser";
 import { load } from "cheerio";
 
-export default function ArticlePage({ article }: { article: articleType }) {
+export default function ArticlePage({
+  articlePage,
+}: {
+  articlePage: articlePageType;
+}) {
   const {
     content: articleContent,
     author,
     date: articlePublishDate,
     title: articleTitle,
-  } = article;
+  } = articlePage;
 
   if (!articleContent) {
     return <div>No content available</div>;

@@ -1,36 +1,16 @@
 /* light theme */
-.lightMode {
-  --background-color: #ffffff;
-  --text-color: #666;
-  --hover-background-color: #efefef;
-  --hover-text-color: #000;
-  --border-color: #9d9d9d;
-}
-
-/* Define dark theme */
-.darkMode {
-  --background-color: #000000;
-  --text-color: #97a1aa;
-  --hover-background-color: #182334;
-  --hover-text-color: #fff;
-  --border-color: #3a3a3a;
-}
-
 .navbarRoot {
-  width: 100%;
-  height: 4.5rem;
-  border-bottom: 1px solid slategray;
-  background-color: white;
-
+  height: 4rem;
+  border-bottom: 1px solid var(--nav-border);
+  background-color: var(--nav-background);
   position: sticky;
   top: 0px;
   z-index: 100; //higher z-index so it stays on top of everything
 
   .navbarContainer {
-    width: 100%;
+    max-width: 1100px;
     height: 100%;
-    padding: 0.8rem 1rem;
-
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,10 +18,43 @@
     .navbarStart {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 0.5rem;
 
       a {
         text-decoration: none;
+      }
+
+      .navbarStartLink {
+        display: block;
+      }
+
+      .logoAndTemp {
+        display: flex;
+        align-items: center;
+
+        .temperatureInfo {
+          display: flex;
+          align-items: center;
+          display: none;
+          .temperatureIconContainer {
+            display: block;
+            height: 3rem;
+            width: 3rem;
+            position: relative;
+
+            .temperatureIcon {
+              height: 100%;
+              width: 100%;
+              display: block;
+              object-fit: cover;
+            }
+
+            span {
+              display: block;
+              color: var(--nav-text);
+            }
+          }
+        }
       }
 
       .navbarLogo {
@@ -51,17 +64,65 @@
 
         .navbarLogoSVGContainer {
           .navbarLogoSVG {
-            width: 2rem;
-            height: 2rem;
+            width: 7rem;
+            height: 4rem;
+            color: var(--nav-text);
           }
         }
+      }
+    }
+  }
+}
 
-        .navbarLogoText {
-          color: black;
-          font-size: 1.5rem;
-          font-weight: 500;
-          user-select: none;
+@media (min-width: 768px) {
+  .navbarRoot {
+    .navbarContainer {
+      max-width: 1100px;
+
+      margin: auto;
+      padding: 0.8rem 2rem;
+
+      .navbarStart {
+        a {
           text-decoration: none;
+        }
+
+        .logoAndTemp {
+          display: flex;
+          align-items: center;
+          position: relative;
+
+          .navbarLogo {
+            .navbarLogoSVGContainer {
+              .navbarLogoSVG {
+                width: 8rem;
+                height: 4rem;
+              }
+            }
+          }
+          .temperatureInfo {
+            display: flex;
+            align-items: center;
+            color: var(--nav-text);
+
+            .temperatureIconContainer {
+              display: block;
+              height: 3rem;
+              width: 3rem;
+              position: relative;
+
+              .temperatureIcon {
+                height: 100%;
+                width: 100%;
+                display: block;
+                object-fit: cover;
+              }
+
+              span {
+                display: block;
+              }
+            }
+          }
         }
       }
     }
@@ -70,12 +131,12 @@
 
 @media (min-width: 1200px) {
   .navbarRoot {
-    border-bottom: 1px solid slategray;
-    background-color: white;
-
     .navbarContainer {
-      width: 75%;
+      max-width: 1100px;
+
       margin: auto;
+      padding: 0.8rem 2rem;
+
       .navbarStart {
         a {
           text-decoration: none;
@@ -84,13 +145,9 @@
         .navbarLogo {
           .navbarLogoSVGContainer {
             .navbarLogoSVG {
-              width: 2rem;
-              height: 2rem;
+              width: 8rem;
+              height: 4rem;
             }
-          }
-
-          .navbarLogoText {
-            color: black;
           }
         }
       }

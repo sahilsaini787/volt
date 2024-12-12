@@ -1,20 +1,58 @@
 .userPrefBtns {
   display: flex;
   gap: 1rem;
-
   .switchLayoutBtn,
   .switchThemeBtn {
     background: none;
-    border: 1px solid slategray;
+    border: 1px solid var(--userPrefBtns-border);
     padding: 0.5rem;
     border-radius: 5px;
     height: 2.4rem;
     width: 2.4rem;
+    color: var(--userPrefBtns);
   }
 
   .switchLayoutBtn:hover,
   .switchThemeBtn:hover {
     cursor: pointer;
-    background-color: #efefef;
+    background-color: var(--userPrefBtns-hover-background);
   }
+}
+
+@keyframes fadeInScale {
+  0% {
+    transform: rotate(-180deg) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutScale {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(180deg) scale(0);
+    opacity: 0;
+  }
+}
+
+.fade_in {
+  animation: fadeInScale 0.1s ease-in-out forwards;
+  display: block;
+}
+
+.fade_out {
+  animation: fadeOutScale 0.1s ease-in-out forwards;
+  display: none;
 }
